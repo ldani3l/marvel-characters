@@ -18,11 +18,12 @@ class CharacterFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'idMarvel' => $this->faker->numberBetween(1000000,9000000),
             'description' => $this->faker->sentence(),
             'resourceURI' => $this->faker->url(),
             'score' => rand(1,10),
             'comment' => $this->faker->text(),
-            'nickname' => $this->faker->name(),
+            'urlimg' => $this->faker->url(),
         ];
     }
 }

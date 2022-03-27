@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
+            $table->integer('idMarvel');
             $table->string('name');
             $table->string('description');
             $table->string('resourceURI');
             $table->integer('score');
             $table->text('comment');
-            $table->string('nickname');
+            $table->text('urlimg');
             $table->timestamps();
         });
     }
