@@ -14,8 +14,9 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        $characters = Character::all();
-
+        return view('character.index', [
+            'characters' => Character::latest()->paginate()
+        ]);
     }
 
     /**

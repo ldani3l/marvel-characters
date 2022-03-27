@@ -13,7 +13,7 @@
         <nav class="flex items-center justify-between flex-wrap bg-black p-6 fixed w-full z-10 top-0">
             <div class="flex items-center flex-shrink-0 text-white mr-6">
                 <a class="text-white no-underline hover:text-white hover:no-underline inline-flex" href="#">
-                    <img src="img/logo.jpg" class="max-h-11" alt="">
+                    <img src="{{ asset('img/logo.jpg') }}" class="max-h-11" alt="">
                     <span class="text-4xl pl-2"> | Personajes</span>
                 </a>
             </div>
@@ -26,25 +26,30 @@
             <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
                 <ul class="list-reset lg:flex justify-end flex-1 items-center">
                     @auth
-                    <li class="mr-3">
-                        <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">Buscar</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">link</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">link</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block py-2 px-4 text-white no-underline" href="#">Bienvenid@: {{ Auth::user()->name }}</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block py-2 px-4 text-white no-underline" href="{{ route('signout') }}">Salir</a>
-                    </li>
+                        <li class="mr-3">
+                            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                            href="{{ route('character.index') }}">
+                                Mis personajes
+                            </a>
+                        </li>
+                        <li class="mr-3">
+                            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                            href="#">
+                                Añadir nuevo
+                            </a>
+                        </li>
+                        <li class="mr-3">
+                            <a class="inline-block py-2 px-4 text-white no-underline" href="#">
+                                Bienvenid@: {{ Auth::user()->name }}
+                            </a>
+                        </li>
+                        <li class="mr-3">
+                            <a class="inline-block py-2 px-4 text-white no-underline" href="{{ route('signout') }}">Salir</a>
+                        </li>
                     @else
-                    <li class="mr-3">
-                        <a class="inline-block py-2 px-4 text-white no-underline" href="{{ route('login') }}">Iniciar sesión</a>
-                    </li>
+                        <li class="mr-3">
+                            <a class="inline-block py-2 px-4 text-white no-underline" href="{{ route('login') }}">Iniciar sesión</a>
+                        </li>
                     @endauth
                 </ul>
             </div>
