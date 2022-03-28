@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Character;
+use Validator;
 use Illuminate\Http\Request;
 
 class CharacterController extends Controller{
@@ -56,6 +57,16 @@ class CharacterController extends Controller{
     }
 
     public function update(Request $request, Character $character){
+        $validator = Validator::make($request->all(),[
+            'idMarvel' => 'required|numeric',
+            'description' => 'string|max:255',
+            'resourceURI' => 'required|url|max:255',
+            'score' => 'string|max:11',
+            'urlimg' => 'url'
+        ]);
+        if($validator->fails()){
+            return response()->json($validator->errors());
+        }
         $character->idMarvel = $request->idMarvel;
         $character->name = $request->name;
         $character->description = $request->description;

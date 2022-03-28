@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use App\Models\Character;
 use Illuminate\Http\Request;
 
@@ -29,18 +30,13 @@ class CharacterController extends Controller{
     }
     public function store($idMarvel){
         //dd($idMarvel);
-        $characters = $this->getCharactersAPI();
         foreach($characters as $c){
-            //$compara = strpos($c['id'], $idMarvel);
             if ($idMarvel == $c['id']){
                 $character = new Character();
                 $character->idMarvel = $c['id'];
                 $character->name = $c['name'];
                 $character->resourceURI = $c['urls'][0]['url'];
                 $character->user_id = auth()->user()->id;
-
-                //$character->description = $c['description'];
-                //$character->urlimg = $c['thumbnail']['path'].".".$c['thumbnail']['extension'];
                 $character->save();
                 return Redirect('/');
             }
@@ -71,6 +67,13 @@ class CharacterController extends Controller{
     }
 
     public function update(Request $request, Character $character){
+        $validator = Validator::make($request->all(),[
+            'idMarvel' => 'required|numeric',
+            'description' => 'string|max:255',
+            'resourceURI' => 'required|url|max:255',
+            'score' => 'string|max:11',
+            'urlimg' => 'url'
+        ]);
         $character->idMarvel = $request->idMarvel;
         $character->name = $request->name;
         $character->description = $request->description;
