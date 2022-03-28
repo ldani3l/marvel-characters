@@ -13,10 +13,10 @@ class AuthController extends Controller
 {
     public function register(Request $request){
         $validator = Validator::make($request->all(),[
-        'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:8'
-    ]);
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8'
+        ]);
         if($validator->fails()){
             return response()->json($validator->errors());
         }
@@ -28,7 +28,8 @@ class AuthController extends Controller
         $token = $user->createToken('auth_tokens')->plainTextToken;
 
         return response()
-            ->json(['data' => $user,'access_token' => $token, 'token_type' => 'Bearer', ]);
+            ->json(['data' => $user,'access_token' => $token, 'token_type' => 'Bearer'
+        ]);
     }
     public function login(Request $request){
         if(!Auth::attempt($request->only('email','password'))){

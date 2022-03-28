@@ -22,8 +22,9 @@ class CharacterFactory extends Factory
             'description' => $this->faker->sentence(),
             'resourceURI' => $this->faker->url(),
             'score' => rand(1,10),
-            'comment' => $this->faker->text(),
-            'urlimg' => $this->faker->url(),
+            //'comment' => $this->faker->text(),
+            'urlimg' => 'https://www.hongkiat.com/blog/wp-content/uploads/really-nice-ironman-wallpapers/ironman-blast.jpg',
+            'user_id' => rand(1,4),
         ];
     }
 }

@@ -17,11 +17,13 @@ return new class extends Migration
             $table->id();
             $table->integer('idMarvel');
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('resourceURI');
-            $table->integer('score');
-            $table->text('comment');
-            $table->text('urlimg');
+            $table->integer('score')->nullable();
+            //$table->text('comment');
+            $table->text('urlimg')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id','character_fk_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('restrict');
             $table->timestamps();
         });
     }

@@ -25,6 +25,12 @@
             </div>
             <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
                 <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                    <li class="mr-3">
+                        <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                        href="{{ route('character.look-for') }}">
+                            Añadir nuevo
+                        </a>
+                    </li>
                     @auth
                         <li class="mr-3">
                             <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
@@ -32,12 +38,7 @@
                                 Mis personajes
                             </a>
                         </li>
-                        <li class="mr-3">
-                            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-                            href="#">
-                                Añadir nuevo
-                            </a>
-                        </li>
+
                         <li class="mr-3">
                             <a class="inline-block py-2 px-4 text-white no-underline" href="#">
                                 Bienvenid@: {{ Auth::user()->name }}
