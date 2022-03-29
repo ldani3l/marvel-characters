@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use App\Http\Controllers\Controller;
-use App\Models\Character;
 use Validator;
+use App\Models\Character;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CharacterController extends Controller{
 

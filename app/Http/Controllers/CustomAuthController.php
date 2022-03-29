@@ -64,34 +64,4 @@ class CustomAuthController extends Controller{
         Auth::logout();
         return Redirect('/');
     }
-
-    /*public function update(Request $request){
-        $data = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            ]);
-        if($request->flexSwitchCheckChecked){
-            $currentPassword = Auth::User()->password;
-            if(Hash::check($request['password'], $currentPassword)){
-                $userId = Auth::User()->id;
-                $user = User::find($userId);
-                $user->nombres = $request->nombres;
-                $user->email = $request->email;
-                $user->password = Hash::make($request['password_']);;
-            }
-            else{
-                return back()->with('mjs', "<div class='alert alert-warning' role='alert'>Las contraseñas no coinciden.</div>");
-            }
-        }
-        else{
-            $user = User::find(Auth::user()->id);
-            $user->nombres = $request->nombres;
-            $user->email = $request->email;
-        }
-        if($user->save())
-            $mjs = "<div class='alert alert-success' role='alert'>Los datos se guardaron correctamente.</div>";
-        else
-            $mjs = "<div class='alert alert-danger' role='alert'>Los datos se guardaron correctamente.</div>";
-        return back()->with('mjs', $mjs);
-    }*/
 }

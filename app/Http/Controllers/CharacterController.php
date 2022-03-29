@@ -30,6 +30,7 @@ class CharacterController extends Controller{
     }
     public function store($idMarvel){
         //dd($idMarvel);
+        $characters = $this->getCharactersAPI();
         foreach($characters as $c){
             if ($idMarvel == $c['id']){
                 $character = new Character();
@@ -55,10 +56,9 @@ class CharacterController extends Controller{
         $persons = Array();
         foreach($characters as $c){
             $compara = strpos($c['name'], $request->name);
-            if ($compara !== false)
+            if ($compara != false)
                 $persons[] = $c;
         }
-        #dd($persons);
         return view('character.find',compact('persons'));
     }
 
